@@ -1,7 +1,5 @@
 import streamlit as st
-import datetime
 from pathlib import Path
-import time
 from posts import posts
 
 # Configuración de la página
@@ -11,16 +9,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
-# Inicializar session state para auto-refresh
-if 'last_update' not in st.session_state:
-    st.session_state.last_update = time.time()
-
-# Auto-refresh cada 30 segundos (opcional)
-auto_refresh = st.sidebar.checkbox("🔄 Auto-refresh (30s)", value=False)
-if auto_refresh:
-    time.sleep(30)
-    st.rerun()
 
 # CSS personalizado para mejorar la apariencia
 st.markdown("""
@@ -50,27 +38,11 @@ st.markdown("""
         border-radius: 8px;
         margin-bottom: 1rem;
     }
-    .refresh-indicator {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        background: #4CAF50;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        z-index: 1000;
-    }
+
 </style>
 """, unsafe_allow_html=True)
 
-# Indicador de última actualización
-current_time = datetime.datetime.now().strftime("%H:%M:%S")
-st.markdown(f"""
-<div class="refresh-indicator">
-    Última actualización: {current_time}
-</div>
-""", unsafe_allow_html=True)
+
 
 # Header principal
 st.markdown("""
@@ -82,17 +54,7 @@ st.markdown("""
 
 # Sidebar con información personal
 with st.sidebar:
-    # Controles de refresh
-    st.markdown("### 🔄 Controles")
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("🔄 Refrescar"):
-            st.rerun()
-    with col2:
-        if st.button("⚡ Limpiar Cache"):
-            st.cache_data.clear()
-            st.rerun()
-    
+
     st.markdown("""
     <div class="sidebar-section">
         <h3>👋 Sobre mí</h3>

@@ -23,6 +23,10 @@ def show_post():
         sin embargo requería mayor desarrollo en todo sentido, por lo que fue descartada.
         
         Todo con una estetica muy Notion-esque, a la que estamos ya tan acostumbrados en estos días jajaja :), pero también soporta css custom si lo deseas.
+
+        Como se conecta directamente con tu github, se actualiza y deployea automaticamente en cosa de minutos, lo que lo hace genial para crear un mvp, crear visualizaciones o simplemente escribir un blog de lo que se te pase por la cabeza.
+
+        
         """
     )
     
