@@ -4,15 +4,48 @@ from posts import posts
 
 # Configuración de la página
 st.set_page_config(
-    page_title="Blog",
-    page_icon="🚀",
-    layout="wide",
+    page_title="Trixxie en el mundo tech",
+    page_icon="👽",
+    layout="centered",  # Cambiado de "wide" a "centered" para mejor lectura
     initial_sidebar_state="expanded"
 )
 
 # CSS personalizado para elementos específicos (usando config.toml para el tema base)
 st.markdown("""
 <style>
+    /* Ancho óptimo para lectura - regla de 66 caracteres por línea */
+    .main .block-container {
+        max-width: 65rem !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+    
+    /* Contenido de posts con ancho óptimo para lectura */
+    .stMarkdown, .stMarkdown p {
+        max-width: 75ch !important; /* 75 caracteres = ~12-13 palabras por línea */
+        line-height: 1.6 !important;
+        margin-bottom: 1.2rem !important;
+    }
+    
+    /* Headers más legibles */
+    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {
+        max-width: 75ch !important;
+        line-height: 1.3 !important;
+        margin-top: 2rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Listas con espaciado mejorado */
+    .stMarkdown ul, .stMarkdown ol {
+        max-width: 75ch !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1.2rem !important;
+    }
+    
+    .stMarkdown li {
+        margin-bottom: 0.5rem !important;
+    }
+
     /* Header principal con gradiente rosa */
     .main-header {
         text-align: center;
@@ -114,9 +147,10 @@ with st.sidebar:
         <h3>🛠️ Tech Stack</h3>
         <ul>
             <li>Python</li>
-            <li>React</li>
+            <li>JS/React/Next</li>
             <li>Pandas</li>
             <li>GCP</li>
+            <li>SQL</li>
             <li>Streamlit</li>
             <li>Docker</li>
             <li>Git</li>
