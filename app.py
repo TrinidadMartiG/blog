@@ -136,11 +136,22 @@ with st.sidebar:
     st.markdown("""
     <div class="sidebar-section">
         <h3>👋 Sobre mí</h3>
-        <p>Desarrollo en python, a veces react, a veces analizo datos, y he modelado uno que otro modelo de ML :).<p/>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Imagen centrada y con estilo
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("./media/ranita.jpg", caption="🐸")
+    
+    st.markdown("""
+    <div class="sidebar-section" style="margin-top: 1rem;">
+        <p>Desarrollo en python, a veces react, a veces analizo datos, y he modelado uno que otro modelo de ML :).</p>
         <p>Apasionada por la tecnología, la ciencia y los libros.</p>
         <p>Buscando mi especialidad? 🤔</p>
     </div>
     """, unsafe_allow_html=True)
+
     
     st.markdown("""
     <div class="sidebar-section">
