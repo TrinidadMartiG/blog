@@ -1,0 +1,30 @@
+[theme]
+# Configuración del tema rosa pastel para el blog de Trixxie
+
+# Tema base (light para los colores rosa pastel)
+base = "light"
+
+# Color primario (rosa vibrante para botones e interacciones)
+primaryColor = "#ec4899"
+
+# Color de fondo de la aplicación (blanco)
+backgroundColor = "#ffffff"
+
+# Color de fondo secundario (rosa muy suave para widgets y elementos)
+secondaryBackgroundColor = "#fef7f7"
+
+# Color del texto principal (gris oscuro suave)
+textColor = "#374151"
+
+# Fuente principal
+font = "sans serif"
+
+# Configuración adicional para mejor experiencia
+[server]
+# Puerto por defecto
+port = 8501
+
+# Configuración para desarrollo
+[browser]
+# Recopilar estadísticas de uso (opcional)
+gatherUsageStats = false

@@ -18,7 +18,7 @@ def show_post():
 
         **Los requisitos eran claros pero limitantes:** no había mucho presupuesto para una arquitectura compleja, no querían pagar un servidor, y necesitaba ser lo más ligero posible. Al fin de cuentas, surgía como motivación del equipo y se pagaba del bolsillo de ellos. Eso sí, que estuviera en línea y fuese accesible desde cualquier dispositivo.**
         
-        #### Streamlit al rescate
+        #### Streamlit al rescate (https://docs.streamlit.io/)
 
         Conocí esta librería poco tiempo antes que apareciera este proyecto, y fue la oportunidad perfecta para ver qué onda.
         Streamlit es una librería de Python, open source, para crear aplicaciones de una manera súper sencilla. Su particularidad genial: puede autohostearse.
@@ -34,7 +34,7 @@ def show_post():
         Todo con una estética muy Notion-esque, a la que estamos ya tan acostumbrados en estos días jajaja :), pero también soporta css custom si lo deseas.
         Como se conecta directamente con tu github, se actualiza y deployea automáticamente en cosa de minutos, lo que lo hace genial para crear un mvp, crear visualizaciones o simplemente escribir un blog de lo que se te pase por la cabeza.
 
-        #### ¿En qué quedó todo?
+        #### ¿En qué quedó todo? 
 
         **Tech Stack:** Python, Pandas, Streamlit, Git
         - Calcula dosis de antibióticos para pacientes, según métricas antropométricas.

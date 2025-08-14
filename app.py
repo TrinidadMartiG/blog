@@ -12,33 +12,95 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS personalizado para mejorar la apariencia
+# CSS personalizado para elementos específicos (usando config.toml para el tema base)
 st.markdown("""
 <style>
+    /* Header principal con gradiente rosa */
     .main-header {
         text-align: center;
         padding: 2rem 0;
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(90deg, #ec4899 0%, #be185d 100%);
         color: white;
         border-radius: 10px;
         margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(236, 72, 153, 0.2);
     }
+    
+    /* Estilos para post cards */
     .post-card {
-        background: #f8f9fa;
         padding: 1.5rem;
         border-radius: 10px;
         margin-bottom: 1rem;
-        border-left: 4px solid #667eea;
+        border-left: 4px solid #ec4899;
+        border: 1px solid #f3e8ff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        transition: all 0.2s ease;
     }
-    .post-date {
-        color: #6c757d;
-        font-size: 0.9rem;
+    
+    .post-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(236, 72, 153, 0.1);
     }
+    
+    /* Estilos para tags */
+    .tag {
+        background: #fce7f3;
+        color: #ec4899;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-right: 0.5rem;
+        margin-bottom: 0.3rem;
+        display: inline-block;
+        border: 1px solid #ec4899;
+        opacity: 0.9;
+        transition: all 0.2s ease;
+    }
+    
+    .tag:hover {
+        opacity: 1;
+        transform: translateY(-1px);
+        background: #ec4899;
+        color: white;
+    }
+    
+    /* Estilos para comentarios - SIMPLIFICADO para ambos temas */
+    .comment-card {
+        padding: 1.2rem;
+        border-radius: 12px;
+        margin: 1rem 0;
+        border-left: 4px solid #ec4899;
+        border: 1px solid rgba(236, 72, 153, 0.2);
+        background: rgba(236, 72, 153, 0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: all 0.2s ease;
+    }
+    
+    .comment-card:hover {
+        border-color: rgba(236, 72, 153, 0.4);
+        box-shadow: 0 4px 8px rgba(236, 72, 153, 0.15);
+        transform: translateY(-1px);
+    }
+    
+    /* Estilos para sidebar sections */
     .sidebar-section {
-        background: #f1f3f4;
         padding: 1rem;
         border-radius: 8px;
         margin-bottom: 1rem;
+        border: 1px solid #f3e8ff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .sidebar-section a {
+        color: #ec4899;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .sidebar-section a:hover {
+        color: #be185d;
+        text-decoration: underline;
     }
 
 </style>
@@ -60,8 +122,9 @@ with st.sidebar:
     st.markdown("""
     <div class="sidebar-section">
         <h3>👋 Sobre mí</h3>
-        <p>Desarrollo en python, a veces react. También analizo datos y he construido modelos de ML :).<p/>
+        <p>Desarrollo en python, a veces react, a veces analizo datos, y he modelado uno que otro modelo de ML :).<p/>
         <p>Apasionada por la tecnología, la ciencia y los libros.</p>
+        <p>Buscando mi especialidad? 🤔</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -191,19 +254,12 @@ def mostrar_comentarios(post_id):
         st.markdown("---")
         for comment in reversed(comentarios):  # Más recientes primero
             st.markdown(f"""
-            <div style='
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); 
-                padding: 1.2rem; 
-                border-radius: 12px; 
-                margin: 1rem 0; 
-                border-left: 4px solid #667eea;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            '>
+            <div class="comment-card">
                 <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;'>
-                    <strong style='color: #2c3e50; font-size: 1.1rem;'>👤 {comment['nombre']}</strong>
-                    <small style='color: #6c757d; font-size: 0.9rem;'>📅 {comment['fecha_display']}</small>
+                    <strong style='font-size: 1.1rem;'>👤 {comment['nombre']}</strong>
+                    <small style='font-size: 0.9rem; opacity: 0.7;'>📅 {comment['fecha_display']}</small>
                 </div>
-                <div style='color: #495057; line-height: 1.6; font-size: 1rem;'>
+                <div style='line-height: 1.6; font-size: 1rem; opacity: 0.9;'>
                     {comment['comentario']}
                 </div>
             </div>
@@ -226,7 +282,7 @@ def mostrar_post(post_module):
     """, unsafe_allow_html=True)
     
     if tags:
-        tags_html = " ".join([f"<span style='background:#e3f2fd; padding:0.2rem 0.5rem; border-radius:15px; font-size:0.8rem; margin-right:0.5rem; display:inline-block;'>{tag}</span>" for tag in tags])
+        tags_html = " ".join([f"<span class='tag'>{tag}</span>" for tag in tags])
         st.markdown(f"<div style='margin-top:0.5rem;'>{tags_html}</div>", unsafe_allow_html=True)
     
     st.markdown("</div>", unsafe_allow_html=True)

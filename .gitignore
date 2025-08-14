@@ -3,7 +3,7 @@ venv/
 __pycache__/
 .DS_Store
 README_DEV.md
-.streamlit/
+
 start_dev.sh
 dev_server.py
 
