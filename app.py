@@ -1,6 +1,4 @@
 import streamlit as st
-import json
-import datetime
 from pathlib import Path
 from posts import posts
 
@@ -65,23 +63,6 @@ st.markdown("""
         color: white;
     }
     
-    /* Estilos para comentarios - SIMPLIFICADO para ambos temas */
-    .comment-card {
-        padding: 1.2rem;
-        border-radius: 12px;
-        margin: 1rem 0;
-        border-left: 4px solid #ec4899;
-        border: 1px solid rgba(236, 72, 153, 0.2);
-        background: rgba(236, 72, 153, 0.05);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        transition: all 0.2s ease;
-    }
-    
-    .comment-card:hover {
-        border-color: rgba(236, 72, 153, 0.4);
-        box-shadow: 0 4px 8px rgba(236, 72, 153, 0.15);
-        transform: translateY(-1px);
-    }
     
     /* Estilos para sidebar sections */
     .sidebar-section {
@@ -154,119 +135,6 @@ with st.sidebar:
     </div> 
     """, unsafe_allow_html=True)
 
-# Sistema de comentarios
-def cargar_comentarios(post_id):
-    """Cargar comentarios desde archivo JSON"""
-    comments_dir = Path("comments")
-    comments_dir.mkdir(exist_ok=True)
-    comments_file = comments_dir / f"{post_id}.json"
-    
-    if comments_file.exists():
-        try:
-            with open(comments_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except:
-            return []
-    return []
-
-def guardar_comentarios(post_id, comentarios):
-    """Guardar comentarios en archivo JSON"""
-    comments_dir = Path("comments")
-    comments_dir.mkdir(exist_ok=True)
-    comments_file = comments_dir / f"{post_id}.json"
-    
-    with open(comments_file, 'w', encoding='utf-8') as f:
-        json.dump(comentarios, f, ensure_ascii=False, indent=2)
-
-def mostrar_comentarios(post_id):
-    """Mostrar sistema de comentarios para un post"""
-    # Cargar comentarios existentes
-    comentarios = cargar_comentarios(post_id)
-    
-    # Header de comentarios con contador
-    if comentarios:
-        st.markdown(f"### 💬 Comentarios ({len(comentarios)})")
-    else:
-        st.markdown("### 💬 Comentarios")
-    
-    # Botón para mostrar/ocultar formulario de comentarios
-    key_mostrar_form = f"mostrar_form_{post_id}"
-    if key_mostrar_form not in st.session_state:
-        st.session_state[key_mostrar_form] = False
-    
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        if not st.session_state[key_mostrar_form]:
-            if st.button("✍️ Escribir comentario", use_container_width=True, key=f"btn_escribir_{post_id}"):
-                st.session_state[key_mostrar_form] = True
-                st.rerun()
-        else:
-            if st.button("❌ Cancelar", use_container_width=True, key=f"btn_cancelar_{post_id}"):
-                st.session_state[key_mostrar_form] = False
-                st.rerun()
-    
-    # Mostrar formulario solo si está activado
-    if st.session_state[key_mostrar_form]:
-        st.markdown("---")
-        with st.form(f"comment_form_{post_id}", clear_on_submit=True):
-            st.markdown("**💭 Comparte tu opinión:**")
-            col1, col2 = st.columns([2, 1])
-            
-            with col1:
-                nombre = st.text_input("Tu nombre:", placeholder="¿Cómo te llamas?")
-            with col2:
-                email = st.text_input("Email (opcional):", placeholder="tu@email.com")
-            
-            comentario = st.text_area(
-                "Tu comentario:", 
-                placeholder="¿Qué opinas de este post? ¿Tienes alguna experiencia similar?",
-                height=100
-            )
-            
-            col_submit1, col_submit2 = st.columns(2)
-            with col_submit1:
-                submitted = st.form_submit_button("💬 Enviar comentario", use_container_width=True)
-            with col_submit2:
-                if st.form_submit_button("❌ Cancelar", use_container_width=True):
-                    st.session_state[key_mostrar_form] = False
-                    st.rerun()
-            
-            if submitted:
-                if nombre.strip() and comentario.strip():
-                    nuevo_comentario = {
-                        "id": len(comentarios) + 1,
-                        "nombre": nombre.strip(),
-                        "email": email.strip() if email.strip() else None,
-                        "comentario": comentario.strip(),
-                        "fecha": datetime.datetime.now().isoformat(),
-                        "fecha_display": datetime.datetime.now().strftime("%d/%m/%Y a las %H:%M")
-                    }
-                    comentarios.append(nuevo_comentario)
-                    guardar_comentarios(post_id, comentarios)
-                    st.session_state[key_mostrar_form] = False  # Ocultar formulario después de enviar
-                    st.success("¡Gracias por tu comentario! 🎉")
-                    st.rerun()
-                else:
-                    st.error("Por favor completa tu nombre y comentario 😊")
-    
-    # Mostrar comentarios existentes
-    if comentarios:
-        st.markdown("---")
-        for comment in reversed(comentarios):  # Más recientes primero
-            st.markdown(f"""
-            <div class="comment-card">
-                <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;'>
-                    <strong style='font-size: 1.1rem;'>👤 {comment['nombre']}</strong>
-                    <small style='font-size: 0.9rem; opacity: 0.7;'>📅 {comment['fecha_display']}</small>
-                </div>
-                <div style='line-height: 1.6; font-size: 1rem; opacity: 0.9;'>
-                    {comment['comentario']}
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-    else:
-        st.markdown("---")
-        st.markdown("*Sé el primero en comentar! 🚀*")
 
 # Función para mostrar posts
 def mostrar_post(post_module):
@@ -290,11 +158,6 @@ def mostrar_post(post_module):
     # Ejecutar la función show_post del módulo
     if hasattr(post_module, "show_post"):
         post_module.show_post()
-    
-    # Agregar sistema de comentarios
-    st.markdown("---")
-    post_id = getattr(post_module, "__name__", "unknown").replace("posts.", "")
-    mostrar_comentarios(post_id)
     
     st.markdown("---")
 

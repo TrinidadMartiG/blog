@@ -62,6 +62,8 @@ def show_post():
 
         [Puedes verla acá](https://nebulacalculator-djwfefdgbt2gwixd7ffkst.streamlit.app/) (Pero recuerda es solo una mini app, no es nada para presumir)
 
+        PD: Te diste cuenta que este blog es un proyecto de streamlit?
+
         Saluditos :D
         """
     )
