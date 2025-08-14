@@ -219,7 +219,7 @@ with tab2:
         mostrar_post(post)
 
 with tab3:
-    st.header("📚 Recursos que me vuelan la cabeza")
+    st.header("📚 Quizá te interesen también")
     
     col1, col2 = st.columns(2)
     
@@ -242,7 +242,7 @@ with tab3:
         - [Paulo Villaroel](https://www.linkedin.com/in/paulovillarroel/) - Enfermero y data scientist, comparte mucho sobre ML aplicado a salud, un crack.
         
         **Tech + Carrera:**
-        - [Nicolás Gómez](https://www.linkedin.com/in/codewithnico/) - Tips sobre trabajar para el extranjero, escribe harto por linkedin y me hace pensar.
+        - [Nicolás Gómez](https://www.linkedin.com/in/codewithnico/) - Otro crack, da muchos tips sobre trabajar para el extranjero, escribe harto por linkedin y me motivo a escribir más.
         """)
 
 # Footer
