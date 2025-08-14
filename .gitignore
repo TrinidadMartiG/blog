@@ -6,3 +6,6 @@ README_DEV.md
 .streamlit/
 start_dev.sh
 dev_server.py
+
+# Comentarios (mantener solo localmente durante desarrollo)
+# comments/
