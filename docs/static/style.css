@@ -1,0 +1,331 @@
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  --bg:       #f5f5f0;
+  --dot:      #cccccc;
+  --ink:      #111111;
+  --meta:     #888888;
+  --muted:    #dddddd;
+  --border:   #222222;
+  --code-bg:  #1a1a1a;
+  --code-fg:  #e0e0e0;
+  --max-w:    860px;
+  --post-w:   680px;
+}
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+a { color: var(--ink); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Base ────────────────────────────────────────────────── */
+body {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1px);
+  background-size: 16px 16px;
+  min-height: 100vh;
+}
+
+.page-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  background: rgba(245, 245, 240, 0.93);
+  min-height: 100vh;
+}
+
+/* ── Typography ──────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--meta);
+}
+
+/* ── Nav ─────────────────────────────────────────────────── */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 12px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 20px;
+}
+.nav-logo {
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--meta);
+}
+.nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+/* ── Status Strip ────────────────────────────────────────── */
+.status-strip {
+  border: 1px solid var(--border);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.status-strip .studying { flex-shrink: 0; }
+.status-strip .studying .label { display: block; margin-bottom: 4px; }
+.status-strip .studying strong { font-size: 1rem; font-weight: 900; }
+.status-strip .bar-section { flex: 1; min-width: 0; }
+.status-strip .bar-section .label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.status-strip .percent {
+  font-size: 1.8rem;
+  font-weight: 900;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ── Progress Bar ────────────────────────────────────────── */
+.progress-bar {
+  background: var(--muted);
+  height: 3px;
+  width: 100%;
+}
+.progress-bar-fill {
+  background: var(--ink);
+  height: 3px;
+}
+
+/* ── Homepage Grid ───────────────────────────────────────── */
+.home-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 28px;
+}
+
+/* ── Curriculum Sidebar ──────────────────────────────────── */
+.curriculum-sidebar {
+  border-right: 1px solid var(--muted);
+  padding-right: 24px;
+}
+.curriculum-sidebar > .label { display: block; margin-bottom: 14px; }
+.course-item { margin-bottom: 12px; }
+.course-item.active .course-name-text { font-weight: 900; color: var(--ink); }
+.course-item.inactive .course-name-text { color: var(--meta); }
+.course-name {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  margin-bottom: 3px;
+}
+.course-name .pct { color: var(--meta); font-size: 0.65rem; }
+
+/* ── Feed ────────────────────────────────────────────────── */
+.feed > .label { display: block; margin-bottom: 14px; }
+.feed-entry {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 16px;
+}
+.feed-entry:last-child { border-bottom: none; }
+.feed-entry .meta {
+  font-size: 0.65rem;
+  color: var(--meta);
+  letter-spacing: 0.2em;
+  margin-bottom: 5px;
+}
+.feed-entry h2 { font-size: 1rem; font-weight: 900; margin-bottom: 6px; }
+.feed-entry .excerpt { font-size: 0.82rem; color: #555; line-height: 1.7; }
+
+/* ── Tags ────────────────────────────────────────────────── */
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.tag {
+  border: 1px solid #555;
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--meta);
+}
+
+/* ── Post Page ───────────────────────────────────────────── */
+.post-header { margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--muted); }
+.post-header .meta {
+  font-size: 0.65rem;
+  color: var(--meta);
+  letter-spacing: 0.25em;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.post-header .meta a { color: var(--meta); font-size: 0.65rem; letter-spacing: 0.2em; }
+.post-header .meta a:hover { color: var(--ink); }
+.post-header h1 { font-size: 1.8rem; margin-bottom: 14px; }
+
+.post-body { max-width: var(--post-w); margin: 0 auto; }
+
+/* TOC */
+.toc {
+  border: 1px solid var(--muted);
+  padding: 14px 18px;
+  margin-bottom: 32px;
+}
+.toc > .label { display: block; margin-bottom: 10px; }
+.toc ol { padding-left: 18px; }
+.toc li { font-size: 0.8rem; margin-bottom: 4px; }
+
+/* Post content */
+.post-content h2 {
+  font-size: 1.1rem;
+  margin: 32px 0 12px;
+  border-bottom: 1px solid var(--muted);
+  padding-bottom: 4px;
+}
+.post-content h3 { font-size: 0.95rem; margin: 22px 0 8px; }
+.post-content p { margin-bottom: 14px; }
+.post-content ul, .post-content ol { padding-left: 22px; margin-bottom: 14px; }
+.post-content li { margin-bottom: 4px; }
+.post-content blockquote {
+  border-left: 2px solid var(--ink);
+  padding-left: 16px;
+  color: var(--meta);
+  margin: 16px 0;
+  font-style: italic;
+}
+.post-content img {
+  max-width: 100%;
+  border: 1px solid #ccc;
+  display: block;
+  margin: 24px auto;
+}
+.post-content video {
+  max-width: 100%;
+  display: block;
+  margin: 24px auto;
+}
+
+/* Code — inline */
+.post-content code {
+  background: #e8e8e3;
+  padding: 1px 5px;
+  font-size: 0.85em;
+}
+
+/* Code — fenced (Pygments) */
+.post-content .highlight {
+  background: var(--code-bg);
+  padding: 16px 18px;
+  margin: 18px 0;
+  overflow-x: auto;
+  position: relative;
+}
+.post-content .highlight pre {
+  color: var(--code-fg);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  margin: 0;
+  background: none;
+}
+.post-content .highlight code { background: none; padding: 0; font-size: inherit; }
+
+/* Pygments tokens — monochrome-friendly */
+.highlight .c,  .highlight .c1, .highlight .cm { color: #555; }
+.highlight .k,  .highlight .kd, .highlight .kn { color: #bbb; font-weight: bold; }
+.highlight .s,  .highlight .s1, .highlight .s2 { color: #aaa; }
+.highlight .mi, .highlight .mf                  { color: #ddd; }
+.highlight .nf                                  { color: #e0e0e0; }
+.highlight .nc                                  { color: #ccc; }
+
+.lang-label {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 0.58rem;
+  color: #555;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Post footer nav */
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+/* ── Curriculum Page ─────────────────────────────────────── */
+.curriculum-page > h1 { font-size: 1.5rem; margin-bottom: 6px; }
+.curriculum-page .page-meta { margin-bottom: 32px; display: block; }
+.curriculum-category { margin-bottom: 36px; }
+.curriculum-category h2 {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--meta);
+  border-bottom: 1px solid var(--muted);
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+.curriculum-course {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  gap: 16px;
+  align-items: start;
+  padding: 12px 0;
+  border-bottom: 1px solid #ebebeb;
+}
+.curriculum-course .course-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
+.curriculum-course .course-title a { color: var(--ink); }
+.curriculum-course .course-title a:hover { text-decoration: underline; }
+.curriculum-course .post-count { font-size: 0.65rem; color: var(--meta); margin-top: 4px; }
+.status-badge {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: right;
+  padding-top: 3px;
+}
+.status-badge.not-started { color: var(--meta); }
+.status-badge.in-progress { color: var(--ink); font-weight: 700; }
+.status-badge.complete    { color: var(--ink); }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 620px) {
+  .home-grid { grid-template-columns: 1fr; }
+  .curriculum-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--muted);
+    padding-right: 0;
+    padding-bottom: 22px;
+    margin-bottom: 22px;
+  }
+  .status-strip { flex-wrap: wrap; gap: 14px; }
+  .status-strip .percent { font-size: 1.4rem; }
+  .curriculum-course { grid-template-columns: 1fr; }
+  .post-header .meta { flex-direction: column; align-items: flex-start; gap: 6px; }
+}

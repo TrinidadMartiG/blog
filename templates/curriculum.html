@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Curriculum — TRINIDAD.LOG{% endblock %}
+{% block content %}
+
+<div class="curriculum-page">
+  <h1>OSSU CS Curriculum</h1>
+  <span class="label page-meta">Self-study · {{ overall_pct }}% complete · {{ completed_courses }}/{{ total_courses }} courses</span>
+
+  {% for category, courses in categories.items() %}
+  <section class="curriculum-category">
+    <h2>{{ category }}</h2>
+    {% for course in courses %}
+    <div class="curriculum-course">
+      <div>
+        <div class="course-title">
+          <a href="{{ course.url }}" target="_blank" rel="noopener">{{ course.name }}</a>
+        </div>
+        <div class="progress-bar" style="margin-top: 5px;">
+          <div class="progress-bar-fill" style="width: {{ course.progress }}%"></div>
+        </div>
+        <div class="post-count">{{ course.post_count }} post{{ 's' if course.post_count != 1 else '' }}</div>
+      </div>
+      <div class="status-badge {{ course.status | replace('_', '-') }}">
+        {{ course.status | replace('_', ' ') | upper }}
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}TRINIDAD.LOG — OSSU CS Journey{% endblock %}
+{% block content %}
+
+<div class="status-strip">
+  <div class="studying">
+    <span class="label">Now Studying</span>
+    <strong>{{ current_course }}{% if current_week %} · Week {{ current_week }}{% endif %}</strong>
+  </div>
+  <div class="bar-section">
+    <div class="label">
+      <span>Overall Progress</span>
+      <span>{{ completed_courses }} / {{ total_courses }} courses</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-bar-fill" style="width: {{ overall_pct }}%"></div>
+    </div>
+  </div>
+  <div class="percent">{{ overall_pct }}%</div>
+</div>
+
+<div class="home-grid">
+
+  <aside class="curriculum-sidebar">
+    <span class="label">Curriculum Map</span>
+    {% for course in sidebar_courses %}
+    <div class="course-item {{ 'active' if course.status == 'in_progress' else 'inactive' }}">
+      <div class="course-name">
+        <span class="course-name-text">{{ '▪' if course.status == 'in_progress' else '·' }} {{ course.name }}</span>
+        <span class="pct">{{ course.progress }}%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: {{ course.progress }}%"></div>
+      </div>
+    </div>
+    {% endfor %}
+  </aside>
+
+  <main class="feed">
+    <span class="label">Recent Entries</span>
+    {% for post in posts %}
+    <article class="feed-entry">
+      <div class="meta">{{ post.date_fmt }} · {{ post.course }}{% if post.week %} · WEEK {{ post.week }}{% endif %}</div>
+      <h2><a href="{{ root }}posts/{{ post.slug }}.html">{{ post.title }}</a></h2>
+      <p class="excerpt">{{ post.excerpt }}</p>
+      {% if post.tags %}
+      <div class="tags">
+        {% for tag in post.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </article>
+    {% else %}
+    <p style="color: var(--meta); font-size: 0.8rem;">No entries yet.</p>
+    {% endfor %}
+  </main>
+
+</div>
+{% endblock %}

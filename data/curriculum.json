@@ -1,0 +1,140 @@
+{
+  "courses": [
+    {
+      "id": "cs50x",
+      "name": "CS50x",
+      "category": "Intro CS",
+      "url": "https://cs50.harvard.edu/x/",
+      "status": "in_progress",
+      "progress": 0
+    },
+    {
+      "id": "how-computers-work",
+      "name": "How Computers Work",
+      "category": "Intro CS",
+      "url": "https://www.coursera.org/learn/how-computers-work",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "mathematics-for-cs",
+      "name": "Mathematics for CS",
+      "category": "Core CS",
+      "url": "https://openlearninglibrary.mit.edu/courses/course-v1:OCW+6.042J+2T2019/about",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "programming-languages-a",
+      "name": "Programming Languages Part A",
+      "category": "Core CS",
+      "url": "https://www.coursera.org/learn/programming-languages",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "programming-languages-b",
+      "name": "Programming Languages Part B",
+      "category": "Core CS",
+      "url": "https://www.coursera.org/learn/programming-languages-part-b",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "programming-languages-c",
+      "name": "Programming Languages Part C",
+      "category": "Core CS",
+      "url": "https://www.coursera.org/learn/programming-languages-part-c",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "nand2tetris-1",
+      "name": "Build a Modern Computer (Part 1)",
+      "category": "Core CS",
+      "url": "https://www.coursera.org/learn/build-a-computer",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "nand2tetris-2",
+      "name": "Build a Modern Computer (Part 2)",
+      "category": "Core CS",
+      "url": "https://www.coursera.org/learn/nand2tetris2",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "operating-systems",
+      "name": "Operating Systems: Three Easy Pieces",
+      "category": "Core CS",
+      "url": "http://pages.cs.wisc.edu/~remzi/OSTEP/",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "computer-networking",
+      "name": "Computer Networking: A Top-Down Approach",
+      "category": "Core CS",
+      "url": "http://gaia.cs.umass.edu/kurose_ross/online_lectures.htm",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "databases",
+      "name": "Databases: Modeling and Theory",
+      "category": "Core CS",
+      "url": "https://www.edx.org/course/modeling-and-theory",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "algorithms-1",
+      "name": "Divide and Conquer, Sorting and Searching",
+      "category": "Core CS",
+      "url": "https://www.coursera.org/learn/algorithms-divide-conquer",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "algorithms-2",
+      "name": "Graph Search, Shortest Paths, Data Structures",
+      "category": "Core CS",
+      "url": "https://www.coursera.org/learn/algorithms-graphs-data-structures",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "algorithms-3",
+      "name": "Greedy Algorithms, Minimum Spanning Trees",
+      "category": "Core CS",
+      "url": "https://www.coursera.org/learn/algorithms-greedy",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "algorithms-4",
+      "name": "Shortest Paths Revisited, NP-Complete Problems",
+      "category": "Core CS",
+      "url": "https://www.coursera.org/learn/algorithms-npcomplete",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "software-engineering",
+      "name": "Software Engineering: Introduction",
+      "category": "Core CS",
+      "url": "https://www.edx.org/course/software-engineering-introduction",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "ethics-in-technology",
+      "name": "Ethics, Technology and Engineering",
+      "category": "Core CS",
+      "url": "https://www.coursera.org/learn/ethics-technology-engineering",
+      "status": "not_started",
+      "progress": 0
+    }
+  ]
+}
