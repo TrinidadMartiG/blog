@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-{% block title %}TRINIDAD.LOG — OSSU CS Journey{% endblock %}
+{% block title %}TRINIDAD.LOG — Reto OSSU CS{% endblock %}
 {% block content %}
 
 <div class="status-strip">
   <div class="studying">
-    <span class="label">Now Studying</span>
-    <strong>{{ current_course }}{% if current_week %} · Week {{ current_week }}{% endif %}</strong>
+    <span class="label">Estudiando ahora</span>
+    <strong>{{ current_course }}{% if current_week %} · Semana {{ current_week }}{% endif %}</strong>
   </div>
   <div class="bar-section">
     <div class="label">
-      <span>Overall Progress</span>
-      <span>{{ completed_courses }} / {{ total_courses }} courses</span>
+      <span>Progreso general</span>
+      <span>{{ completed_courses }} / {{ total_courses }} cursos</span>
     </div>
     <div class="progress-bar">
       <div class="progress-bar-fill" style="width: {{ overall_pct }}%"></div>
@@ -22,25 +22,25 @@
 <div class="home-grid">
 
   <aside class="curriculum-sidebar">
-    <span class="label">Curriculum Map</span>
+    <span class="label">Currículo OSSU</span>
     {% for course in sidebar_courses %}
     <div class="course-item {{ 'active' if course.status == 'in_progress' else 'inactive' }}">
       <div class="course-name">
+        {% if course.url %}
+        <a class="course-name-text" href="{{ course.url }}" target="_blank" rel="noopener">{{ '▪' if course.status == 'in_progress' else '·' }} {{ course.name }}</a>
+        {% else %}
         <span class="course-name-text">{{ '▪' if course.status == 'in_progress' else '·' }} {{ course.name }}</span>
-        <span class="pct">{{ course.progress }}%</span>
-      </div>
-      <div class="progress-bar">
-        <div class="progress-bar-fill" style="width: {{ course.progress }}%"></div>
+        {% endif %}
       </div>
     </div>
     {% endfor %}
   </aside>
 
   <main class="feed">
-    <span class="label">Recent Entries</span>
+    <span class="label">Entradas recientes</span>
     {% for post in posts %}
     <article class="feed-entry">
-      <div class="meta">{{ post.date_fmt }} · {{ post.course }}{% if post.week %} · WEEK {{ post.week }}{% endif %}</div>
+      <div class="meta">{{ post.date_fmt }} · {{ post.course }}{% if post.week %} · SEMANA {{ post.week }}{% endif %}</div>
       <h2><a href="{{ root }}posts/{{ post.slug }}.html">{{ post.title }}</a></h2>
       <p class="excerpt">{{ post.excerpt }}</p>
       {% if post.tags %}
@@ -50,7 +50,7 @@
       {% endif %}
     </article>
     {% else %}
-    <p style="color: var(--meta); font-size: 0.8rem;">No entries yet.</p>
+    <p style="color: var(--meta); font-size: 0.8rem;">Sin entradas todavía.</p>
     {% endfor %}
   </main>
 

@@ -9,14 +9,51 @@
 <body>
   <div class="page-wrap">
     <nav class="nav">
-      <a href="{{ root }}index.html" class="nav-logo">TRINIDAD.LOG</a>
+      <a href="{{ root }}index.html" class="nav-logo">TRINIDAD MARTÍ — Backend Dev</a>
       <ul class="nav-links">
-        <li><a href="{{ root }}index.html">Feed</a></li>
-        <li><a href="{{ root }}curriculum.html">Curriculum</a></li>
-        <li><a href="{{ root }}about.html">About</a></li>
+        <li><a href="{{ root }}index.html">Inicio</a></li>
+        <li><a href="{{ static_root }}cv.pdf" id="cv-link">CV</a></li>
+        <li><a href="{{ root }}about.html">About me</a></li>
       </ul>
     </nav>
     {% block content %}{% endblock %}
   </div>
+
+  <div class="cv-modal-backdrop" id="cv-backdrop">
+    <div class="cv-modal">
+      <p>¿Descargar CV?</p>
+      <div class="cv-modal-actions">
+        <button class="btn-cancel" id="cv-cancel">Cancelar</button>
+        <button class="btn-confirm" id="cv-confirm">Descargar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var cvLink     = document.getElementById('cv-link');
+    var backdrop   = document.getElementById('cv-backdrop');
+    var btnConfirm = document.getElementById('cv-confirm');
+    var btnCancel  = document.getElementById('cv-cancel');
+
+    cvLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      backdrop.classList.add('open');
+    });
+    btnCancel.addEventListener('click', function() {
+      backdrop.classList.remove('open');
+    });
+    btnConfirm.addEventListener('click', function() {
+      backdrop.classList.remove('open');
+      var a = document.createElement('a');
+      a.href = cvLink.href;
+      a.download = 'Trinidad-Marti-CV.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+    backdrop.addEventListener('click', function(e) {
+      if (e.target === backdrop) backdrop.classList.remove('open');
+    });
+  </script>
 </body>
 </html>

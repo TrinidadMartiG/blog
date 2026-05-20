@@ -5,8 +5,8 @@
 <article>
   <header class="post-header">
     <div class="meta">
-      <span>{{ post.date_fmt }} · {{ post.course }}{% if post.week %} · WEEK {{ post.week }}{% endif %}</span>
-      <a href="{{ root }}index.html">← Back to Feed</a>
+      <span>{{ post.date_fmt }} · {{ post.course }}{% if post.week %} · SEMANA {{ post.week }}{% endif %}</span>
+      <a href="{{ root }}index.html">← Volver</a>
     </div>
     <h1>{{ post.title }}</h1>
     {% if post.tags %}
@@ -19,7 +19,7 @@
   <div class="post-body">
     {% if toc %}
     <nav class="toc">
-      <span class="label">Contents</span>
+      <span class="label">Contenido</span>
       <ol>
         {% for item in toc %}
         <li><a href="#{{ item.anchor }}">{{ item.text }}</a></li>

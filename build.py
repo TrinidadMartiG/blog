@@ -104,11 +104,6 @@ def build_all():
     if STATIC_DIR.exists():
         shutil.copytree(STATIC_DIR, OUTPUT_DIR / "static")
 
-    # copy about.html if present
-    about_src = ROOT / "about.html"
-    if about_src.exists():
-        shutil.copy(about_src, OUTPUT_DIR / "about.html")
-
     md_files = sorted(POSTS_DIR.glob("*.md"), reverse=True)
     posts = [parse_post(str(f)) for f in md_files if not f.name.startswith(".")]
 
@@ -157,6 +152,14 @@ def build_all():
     )
     (OUTPUT_DIR / "curriculum.html").write_text(html)
 
+    about_src = ROOT / "about.md"
+    if about_src.exists():
+        _md.reset()
+        about_content = _md.convert(about_src.read_text())
+        about_tmpl = env.get_template("about.html")
+        html = about_tmpl.render(content=about_content, root="", static_root="static/")
+        (OUTPUT_DIR / "about.html").write_text(html)
+
     print(f"Built {len(posts)} post(s) → {OUTPUT_DIR}")
 
 
@@ -187,9 +190,11 @@ def watch_and_serve(port: int = 8000):
     observer.start()
     print(f"Watching for changes. Serving at http://localhost:{port}")
 
-    os.chdir(OUTPUT_DIR)
-    handler = http.server.SimpleHTTPRequestHandler
-    handler.log_message = lambda *a: None
+    import functools
+    handler = functools.partial(
+        http.server.SimpleHTTPRequestHandler,
+        directory=str(OUTPUT_DIR),
+    )
     httpd = http.server.HTTPServer(("", port), handler)
     try:
         httpd.serve_forever()
@@ -231,7 +236,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="blog-v3 builder")
     parser.add_argument("--watch",   action="store_true", help="watch + serve locally")
     parser.add_argument("--publish", action="store_true", help="build + copy to docs/ for GitHub Pages")
-    parser.add_argument("--port",    type=int, default=8000)
+    parser.add_argument("--port",    type=int, default=8050)
     args = parser.parse_args()
 
     if args.publish:

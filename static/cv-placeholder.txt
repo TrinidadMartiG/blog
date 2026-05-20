@@ -1,0 +1,2 @@
+Coloca tu CV en PDF aquí con el nombre: cv.pdf
+El enlace en el nav apunta a static/cv.pdf
