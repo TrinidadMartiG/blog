@@ -50,7 +50,7 @@ En estas búsquedas encontré hace un tiempo un currículum desarrollado por la 
 - Solo utilizaré IA cuando lleve estancada en un proyecto/ejercicio al menos unos 30 min y soy incapaz de avanzar.
 - Todos los cursos tienen bibliografía asociada, la utilizaré como consulta, y revisaré algunos que me parezcan útiles, interesantes o divertidos.
 - No busco hacerlo en el menor tiempo posible, ni busco certificados, solo conocimiento.
-- Llevo años leyendo y al tanto de ciencias del aprendizaje y de la adquisicion de habilidades, utilizaré técnicas de estudio avanzadas, orientando mi estudio y práctica al uso de estructuras de aprendizaje de orden superior según la taxonomía de Bloom, es decir, priorizar análisis, evaluación y creación, espero ser capaz de dar una demostración y uso de cada segmento del currículum que termine, para eso estará este blog.
+- Llevo años leyendo y al tanto de ciencias del aprendizaje y de la adquisicion de habilidades, utilizaré técnicas de estudio avanzadas, orientando mi estudio y práctica al uso de estructuras de aprendizaje de orden superior según la taxonomía de Bloom, es decir, priorizar análisis, evaluación y creación, espero ser capaz de dar una demostración y uso de cada segmento del currículum que termine, para eso estará este blog. La ídea es obtener y aplicar activamente la información y construir las relaciones correctas con mis conocimientos actuales para armar el mapa mental completo.
 - Disfrutar el proceso, me adentro en esto con completa curiosidad.
 
 ## Desafíos/miedos

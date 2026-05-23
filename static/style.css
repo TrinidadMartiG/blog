@@ -45,8 +45,10 @@ h1, h2, h3, h4 {
   letter-spacing: -0.01em;
   line-height: 1.2;
 }
+
+
 .label {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--meta);
@@ -139,10 +141,10 @@ a.course-name-text:hover { text-decoration: underline; }
 .course-name {
   display: flex;
   justify-content: space-between;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   margin-bottom: 3px;
 }
-.course-name .pct { color: var(--meta); font-size: 0.65rem; }
+.course-name .pct { color: var(--meta); font-size: 0.72rem; }
 
 /* ── Feed ────────────────────────────────────────────────── */
 .feed > .label { display: block; margin-bottom: 14px; }
@@ -153,19 +155,19 @@ a.course-name-text:hover { text-decoration: underline; }
 }
 .feed-entry:last-child { border-bottom: none; }
 .feed-entry .meta {
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   color: var(--meta);
-  letter-spacing: 0.2em;
-  margin-bottom: 5px;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
 }
-.feed-entry h2 { font-size: 1rem; font-weight: 900; margin-bottom: 6px; }
-.feed-entry .excerpt { font-size: 0.82rem; color: #555; line-height: 1.7; }
+.feed-entry h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+.feed-entry .excerpt { font-size: 0.9rem; color: #444; line-height: 1.75; }
 
 /* ── Tags ────────────────────────────────────────────────── */
 .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
 .tag {
   border: 1px solid #555;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   padding: 2px 8px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -197,7 +199,7 @@ a.course-name-text:hover { text-decoration: underline; }
 }
 .toc > .label { display: block; margin-bottom: 10px; }
 .toc ol { padding-left: 18px; }
-.toc li { font-size: 0.8rem; margin-bottom: 4px; }
+.toc li { font-size: 0.85rem; margin-bottom: 5px; }
 
 /* Post content */
 .post-content h2 {
@@ -304,7 +306,7 @@ a.course-name-text:hover { text-decoration: underline; }
   padding: 12px 0;
   border-bottom: 1px solid #ebebeb;
 }
-.curriculum-course .course-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
+.curriculum-course .course-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
 .curriculum-course .course-title a { color: var(--ink); }
 .curriculum-course .course-title a:hover { text-decoration: underline; }
 .curriculum-course .post-count { font-size: 0.65rem; color: var(--meta); margin-top: 4px; }
